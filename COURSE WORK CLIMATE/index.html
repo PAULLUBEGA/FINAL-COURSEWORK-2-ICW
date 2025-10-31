@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change Awareness</title>
+    <style>
+        /* CSS Reset and Variables */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --primary: #1a5276;
+            --secondary: #27ae60;
+            --accent: #e67e22;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #34495e;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #e6f7ff 0%, #f0f8ff 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        /* Header Styles */
+        
+        header {
+            background: linear-gradient(to right, var(--primary), #2980b9);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        /* Hero Section */
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('IMAGES/image center.png') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            background: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        /* Content Sections */
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .section h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: var(--transition);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .image-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .image-content img {
+            max-width: 50%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .image-content.reverse {
+            flex-direction: row-reverse;
+        }
+        /* Impact Section */
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .impact-item {
+            background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid #d6eaf8;
+        }
+        
+        .impact-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .impact-item h3 {
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        /* What You Can Do Section */
+        
+        .action-list {
+            list-style: none;
+        }
+        
+        .action-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #ddd;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .action-list li:before {
+            content: "✓";
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        /* Newsletter Section */
+        
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary) 0%, #3498db 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+        
+        .newsletter h2 {
+            color: white;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .newsletter p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .subscribe-form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 1rem;
+        }
+        
+        .subscribe-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .subscribe-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .subscribe-btn:hover {
+            background: #d35400;
+        }
+        /* Links Section */
+        
+        .links-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .links-section a {
+            display: inline-block;
+            margin: 0 1rem;
+            padding: 10px 20px;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .links-section a:hover {
+            background: #219653;
+            transform: translateY(-3px);
+        }
+        /* Footer */
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 992px) {
+            .image-content {
+                flex-direction: column;
+            }
+            .image-content img {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            .section {
+                padding: 2rem;
+            }
+            .subscribe-form {
+                flex-direction: column;
+            }
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            .section {
+                padding: 1.5rem;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="IMAGES/logo tree right side.png" alt="Climate Awareness Logo">
+                    <h1>Climate Awareness</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#causes">Causes</a></li>
+                        <li><a href="#impacts">Impacts</a></li>
+                        <li><a href="#solutions">Solutions</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Welcome to Climate Change Awareness</h2>
+            <p>Join the global movement to protect our planet and create a sustainable future for generations to come</p>
+            <a href="#solutions" class="cta-button">Take Action Now</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Understanding Climate Change -->
+        <section class="section">
+            <h2>Understanding Climate Change</h2>
+            <p>Climate change refers to significant and lasting changes in the Earth's climate, particularly an increase in global temperatures. This phenomenon is largely driven by human activities that release greenhouse gases into the atmosphere.</p>
+
+            <div class="image-content">
+                <img src="IMAGES/image center.png" alt="Climate Change Visualization">
+                <div>
+                    <p>Our planet is experiencing unprecedented changes in weather patterns, sea levels, and ecosystems. The scientific consensus is clear: human activity is the primary driver of these changes, and urgent action is needed to mitigate the
+                        worst effects.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Causes -->
+        <section class="section" id="causes">
+            <h2>Key Causes of Climate Change</h2>
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Fossil Fuels</h3>
+                    <p>Burning of fossil fuels (coal, oil, and natural gas) for energy production, transportation, and industrial processes releases massive amounts of CO₂ into the atmosphere.</p>
+                </div>
+                <div class="card">
+                    <h3>Deforestation</h3>
+                    <p>Clearing forests for agriculture, urban development, and logging reduces the Earth's capacity to absorb carbon dioxide, while also releasing stored carbon.</p>
+                </div>
+                <div class="card">
+                    <h3>Agriculture</h3>
+                    <p>Industrial farming practices, including livestock production and fertilizer use, generate significant methane and nitrous oxide emissions.</p>
+                </div>
+                <div class="card">
+                    <h3>Waste Management</h3>
+                    <p>Landfill emissions and improper waste disposal release methane, while manufacturing processes contribute various greenhouse gases.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impacts -->
+        <section class="section" id="impacts">
+            <h2>Impacts of Climate Change</h2>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <h3>Rising Temperatures</h3>
+                    <p>Increasing global temperatures affecting ecosystems, agriculture, and human health.</p>
+                </div>
+                <div class="impact-item">
+                    <h3>Melting Ice</h3>
+                    <p>Rapid melting of polar ice caps and glaciers contributing to sea level rise.</p>
+                </div>
+                <div class="impact-item">
+                    <h3>Extreme Weather</h3>
+                    <p>More frequent and severe weather events including hurricanes, droughts, and floods.</p>
+                </div>
+                <div class="impact-item">
+                    <h3>Biodiversity Loss</h3>
+                    <p>Loss of biodiversity and disruption of ecosystems worldwide.</p>
+                </div>
+                <div class="impact-item">
+                    <h3>Sea Level Rise</h3>
+                    <p>Rising sea levels threatening coastal communities and ecosystems.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What You Can Do -->
+        <section class="section" id="solutions">
+            <h2>What Can You Do?</h2>
+
+            <div class="image-content reverse">
+                <img src="IMAGES/center image 2.png" alt="Climate Solutions">
+                <div>
+                    <p>Individual actions collectively make a significant impact. By adopting sustainable practices in our daily lives, we can reduce our carbon footprint and contribute to global solutions.</p>
+                </div>
+            </div>
+
+            <ul class="action-list">
+                <li>Reduce energy consumption by using energy-efficient appliances and lighting</li>
+                <li>Use public transportation, carpool, bike, or walk instead of driving alone</li>
+                <li>Support renewable energy sources like solar and wind power</li>
+                <li>Reduce, reuse, and recycle to minimize waste</li>
+                <li>Advocate for policies that address climate change and support sustainable practices</li>
+                <li>Choose plant-based meals more often to reduce agricultural emissions</li>
+                <li>Support businesses with strong environmental commitments</li>
+            </ul>
+        </section>
+
+        <!-- Join Movement -->
+        <section class="section">
+            <h2>Join the Movement</h2>
+
+            <div class="image-content">
+                <img src="IMAGES/image down side.png" alt="Join Climate Movement">
+                <div>
+                    <p>Everyone has a role to play in combating climate change. By making informed choices and advocating for change, we can work together to create a more sustainable future for our planet.</p>
+                    <p>Join millions of people worldwide who are taking action in their communities, demanding policy changes, and adopting sustainable lifestyles.</p>
+                </div>
+            </div>
+
+            <div class="links-section">
+                <a href="submit.html">Give Your Feedback</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <h2>Subscribe for Updates</h2>
+            <p>Stay informed about climate change news, solutions, and actions you can take</p>
+            <form class="subscribe-form">
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <button type="submit" class="subscribe-btn">Subscribe</button>
+            </form>
+        </section>
+
+        <!-- External Resource -->
+        <div class="section" style="text-align: center;">
+            <h3>TO KNOW MORE ABOUT CLIMATE CHANGE <a href="https://climate.nasa.gov/" target="_blank" style="color: var(--accent); font-weight: bold;">CLICK HERE</a></h3>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Climate Change Awareness. All rights reserved. denzel</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Twitter">t</a>
+                    <a href="#" aria-label="Instagram">i</a>
+                    <a href="#" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
